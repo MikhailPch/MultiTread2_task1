@@ -9,10 +9,11 @@ public class Main {
         int numberOfRoutes = 1000;
         for (int i = 0; i < numberOfRoutes; i++) {
             new Thread(() -> {
-                synchronized (sizeToFreq) {
-                    String route = generateRoute("RLRFR", 100);
-                    int countOfR = countChar(route, 'R');
 
+                String route = generateRoute("RLRFR", 100);
+                int countOfR = countChar(route, 'R');
+
+                synchronized (sizeToFreq) {
                     if (sizeToFreq.containsKey(countOfR)) {
                         sizeToFreq.put(countOfR, sizeToFreq.get(countOfR) + 1);
                     } else {
